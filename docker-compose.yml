@@ -1,0 +1,17 @@
+version: '3.1'
+services:
+  website:
+    image: php:apache
+    platform: linux/amd64
+    depends_on:
+      - api
+    ports:
+      - "80:80"
+    environment:
+      - USERNAME=toto
+      - PASSWORD=python
+    volumes:
+      - ./website:/var/www/html
+  api:
+    image: simple_api:v1
+    platform: linux/amd64
